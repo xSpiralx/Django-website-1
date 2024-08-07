@@ -9,6 +9,10 @@
             display: block;
             margin: 0 auto;
         }
+        #controls {
+            text-align: center;
+            margin-top: 20px;
+        }
         #scoreboard {
             text-align: center;
             font-size: 24px;
@@ -20,6 +24,9 @@
     <canvas id="pongCanvas" width="800" height="600"></canvas>
     <div id="scoreboard">
         <span id="player1Score">Player 1: 0</span> - <span id="player2Score">Player 2: 0</span>
+    </div>
+    <div id="controls">
+        <button id="pauseButton">Pause</button>
     </div>
     <script src="{% static 'pong_app/pong.js' %}"></script>
 </body>

@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 
 let player1Score = 0;
 let player2Score = 0;
+let paused = false;
 
 // Ball object
 const ball = {
@@ -81,8 +82,10 @@ function render() {
 
 // Game initialization
 function game() {
-    update();
-    render();
+    if (!paused) {
+        update();
+        render();
+    }
 }
 
 // Collision detection
@@ -144,7 +147,7 @@ function update() {
         ball.velocityY = ball.speed * Math.sin(angleRad);
 
         // Increase speed
-        ball.speed += 5;
+        ball.speed += 0.5;
     }
 
     // Update the score
@@ -167,6 +170,12 @@ function drawNet() {
         drawRect(canvas.width / 2 - 1, i, 2, 10, "WHITE");
     }
 }
+
+// Pause the game
+document.getElementById('pauseButton').addEventListener('click', function() {
+    paused = !paused;
+    this.innerText = paused ? 'Resume' : 'Pause';
+});
 
 // Start the game loop
 const framePerSecond = 50;
